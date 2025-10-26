@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {MessagesSquare, ShipWheelIcon} from 'lucide-react'
 import {Link} from 'react-router'
 import {useQueryClient, useMutation} from "@tanstack/react-query"
-import {axiosInstance} from "../lib/axios.js"
 import { signupApi } from '../lib/api.js'
 
 const SignUpPage = () => {
