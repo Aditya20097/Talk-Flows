@@ -9,9 +9,7 @@ import ChatPage from './pages/ChatPage'
 import CallPage from './pages/CallPage'
 import  {Toaster} from 'react-hot-toast'
 
-import { useQuery }from "@tanstack/react-query"
 import PageLoader from './components/PageLoader.jsx'
-import { getAuthUser } from './lib/api.js'
 import useAuthUserHook from './hooks/useAuthUserHook.js'
 
 const App = () => {
