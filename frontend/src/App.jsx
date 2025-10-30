@@ -8,22 +8,18 @@ import NotificationPage from './pages/NotificationPage'
 import ChatPage from './pages/ChatPage'
 import CallPage from './pages/CallPage'
 import  {Toaster} from 'react-hot-toast'
-import {axiosInstance} from "./lib/axios.js"
+
 import { useQuery }from "@tanstack/react-query"
+import PageLoader from './components/PageLoader.jsx'
+import { getAuthUser } from './lib/api.js'
+import useAuthUserHook from './hooks/useAuthUserHook.js'
 
 const App = () => {
   // tanstack query crash course
-  const {data:authData, isLoading,error} = useQuery({
-    queryKey: ["authUser"],
-    queryFn: async () => {
-      const res = await axiosInstance.get("/auth/me")
-      return res.data
-    },
-    retry: false // auth check
-  })
+ const {isLoading , authUser} = useAuthUserHook()
 
-  const authUser = authData?.user
   
+  if(isLoading) return <PageLoader/>
 
   return (
     <div className=' h-screen' data-theme="night">
