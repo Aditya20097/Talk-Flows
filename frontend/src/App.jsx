@@ -11,6 +11,7 @@ import  {Toaster} from 'react-hot-toast'
 
 import PageLoader from './components/PageLoader.jsx'
 import useAuthUserHook from './hooks/useAuthUserHook.js'
+import Layout from './components/Layout.jsx'
 
 const App = () => {
   // tanstack query crash course
@@ -26,7 +27,9 @@ const App = () => {
     <div className=' h-screen' data-theme="night">
      <Routes>
       <Route path='/' element ={  isAuthenticated && isOnboarded ? (
-        <HomePage/>
+      < Layout> 
+       <HomePage/>
+      </Layout>
       ): (
         <Navigate to = {!isAuthenticated? "/login":"onboarding"}/>
       )}/>
