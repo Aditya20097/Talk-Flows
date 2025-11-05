@@ -20,8 +20,14 @@ import axios from "axios"
 
 
     export const getAuthUser = async () => {
-      const res = await axiosInstance.get("/auth/me")
+     try {
+       const res = await axiosInstance.get("/auth/me")
        return res.data
+     } catch (error) {
+      console.log("error in getauthuser", error);
+      return null
+      
+     }
           
     }
 

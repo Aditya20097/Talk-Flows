@@ -12,11 +12,13 @@ import  {Toaster} from 'react-hot-toast'
 import PageLoader from './components/PageLoader.jsx'
 import useAuthUserHook from './hooks/useAuthUserHook.js'
 import Layout from './components/Layout.jsx'
+import { useThemeStore } from './store/useThemeStore.js'
 
 const App = () => {
   // tanstack query crash course
  const {isLoading , authUser} = useAuthUserHook()
 
+ const {theme} = useThemeStore()
   const isAuthenticated = Boolean(authUser)
   const isOnboarded = authUser?.isOnboarded
 
@@ -24,7 +26,7 @@ const App = () => {
   if(isLoading) return <PageLoader/>
 
   return (
-    <div className=' h-screen' data-theme="forest">
+    <div className=' h-screen' data-theme={theme}>
      <Routes>
       <Route path='/' element ={  isAuthenticated && isOnboarded ? (
       < Layout showSidebar = {true}> 
