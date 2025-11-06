@@ -3,17 +3,21 @@ import FriendRequest from '../models/FriendRequest.js'
 
 export async function getRecommendedUsers(req,res) {
     try {
-        const currentUserId = req.user.currentUserId
-        const currentUser = req.user;
+         
 
+        const currentUserId = req.user.id
+        const currentUser = req.user;
+         
         const recommendedUsers= await User.find({
             $and :[
                 {_id:{$ne:currentUserId}},
-                {$id:{$nin:currentUser.friends}},
+                {_id:{$nin:currentUser.friends}},
                 {isOnboarded:true}
             ]
         })
-        res.status(200).json({recommendedUsers})
+        console.log("Recommended users:", recommendedUsers);
+
+        res.status(200).json(recommendedUsers)
 
     } catch (error) {
         console.error("error in get recommended users controlleer", error.message);

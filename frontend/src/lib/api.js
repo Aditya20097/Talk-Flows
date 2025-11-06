@@ -38,14 +38,15 @@ import axios from "axios"
     }
    
     export async function  getUserFriends() {
-      const response = await axiosInstance.get("/users")
+      const response = await axiosInstance.get("/users/friends")
       return response.data
     }
 
      export async function  getRecommendedUsers() {
-      const response = await axiosInstance.get("/users/friends")
-      return response.data
+      const response = await axiosInstance.get("/users")
+      return  response.data
     }
+
 
      export async function  getOutgoingFriendReqs() {
       const response = await axiosInstance.get("/users/outgoing-friend-requests")

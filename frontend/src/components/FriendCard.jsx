@@ -32,6 +32,7 @@ const FriendCard = ({ friend }) => {
     </div>
   );
 };
+
 export default FriendCard;
 
 export function getLanguageFlag(language) {
@@ -49,5 +50,7 @@ export function getLanguageFlag(language) {
       />
     );
   }
+
   return null;
+  
 }
